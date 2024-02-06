@@ -1,5 +1,3 @@
-
-
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -27,5 +25,4 @@ namespace WebAPI.Extensions
             return services;
         }
     }
-
 }
