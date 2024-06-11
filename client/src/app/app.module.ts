@@ -16,15 +16,22 @@ import { MessagesComponent } from './messages/messages.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberDetailComponent } from './member-list/member-detail/member-detail.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TestErrorComponent } from './errors/test-error/test-error.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './_interceptor/error.interceptor';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent, AboutComponent, HeaderComponent, FooterComponent, MessagesComponent, MemberListComponent, MemberDetailComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent, AboutComponent, HeaderComponent, FooterComponent, MessagesComponent, MemberListComponent, MemberDetailComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
