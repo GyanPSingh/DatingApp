@@ -1,4 +1,7 @@
+using API.Data;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
 using WebAPI.Extensions;
 using WebAPI.Middleware;
 //using WebAPI.Middleware;
@@ -34,5 +37,18 @@ app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
 app.MapControllers();
 
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<DataContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch (Exception ex)
+{
+    var logger = services.GetService<ILogger<Program>>();
+    logger.LogError("Error occurred during migrations");
+}
 
 app.Run();

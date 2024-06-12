@@ -2,6 +2,7 @@ using WebAPI.Data;
 using WebAPI.Interfaces;
 using WebAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.interfaces;
 
 namespace WebAPI.Extensions
 {
@@ -17,7 +18,8 @@ namespace WebAPI.Extensions
             });
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
-
+            services.AddScoped<IUserRepository,UserRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }
     }
