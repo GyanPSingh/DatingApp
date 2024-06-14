@@ -23,13 +23,14 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent, AboutComponent, HeaderComponent, FooterComponent, MessagesComponent, MemberListComponent, MemberDetailComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, MemberCardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,
     BsDropdownModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(),SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
