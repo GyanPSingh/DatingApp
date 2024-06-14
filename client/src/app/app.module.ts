@@ -24,10 +24,11 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent, AboutComponent, HeaderComponent, FooterComponent, MessagesComponent, MemberListComponent, MemberDetailComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, MemberCardComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent, AboutComponent, HeaderComponent, FooterComponent, MessagesComponent, MemberListComponent, MemberDetailComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, MemberCardComponent, MemberEditComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, FormsModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot(),SharedModule
