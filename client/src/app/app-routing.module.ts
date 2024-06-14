@@ -15,10 +15,9 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: '', runGuardsAndResolvers: 'always',
-    canActivate: [authGuard],
+    path: '', runGuardsAndResolvers: 'always',canActivate: [authGuard],
     children: [{ path: 'members', component: MemberListComponent, canActivate: [authGuard] },
-    { path: 'members/:id', component: MemberDetailComponent },
+    { path: 'members/:username', component: MemberDetailComponent },
     { path: 'about', component: AboutComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'messages', component: MessagesComponent },]
